@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #000; }
+    .wrapper { position: relative; width: 400px; height: 500px; background: #000; box-shadow: 0 0 50px #FFD700; border-radius: 20px; overflow: hidden; }
+    .form-wrapper { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; transition: transform 0.5s ease-in-out; }
+    .form-wrapper.sign-in { z-index: 2; background: #000; }
+    .form-wrapper.sign-up { transform: translateY(100%); z-index: 1; background: #000; }
+    .wrapper.active .form-wrapper.sign-in { transform: translateY(-100%); }
+    .wrapper.active .form-wrapper.sign-up { transform: translateY(0); z-index: 2; }
+    h2 { font-size: 30px; color: #fff; text-align: center; }
+    .input-group { position: relative; margin: 30px 0; border-bottom: 2px solid #fff; display: flex; align-items: center; }
+    .input-group i { color: #FFD700; margin-right: 10px; font-size: 18px; }
+    .input-group input { flex: 1; height: 40px; font-size: 16px; color: #fff; padding: 0 5px; background: transparent; border: none; outline: none; }
+    .input-group label { position: absolute; left: 35px; top: 50%; transform: translateY(-50%); font-size: 16px; color: #fff; pointer-events: none; transition: 0.5s; }
+    .input-group input:focus~label, .input-group input:valid~label { top: -5px; left: 30px; font-size: 12px; }
+    .remember { margin: -5px 0 15px 5px; }
+    .remember label { color: #fff; font-size: 14px; }
+    .remember label input { accent-color: #FFD700; }
+    button { position: relative; width: 100%; height: 40px; background: #FFD700; box-shadow: 0 0 10px #FFD700; font-size: 16px; color: #000; font-weight: 500; cursor: pointer; border-radius: 30px; border: none; outline: none; }
+    .signup-link { font-size: 14px; text-align: center; margin: 15px 0; }
+    .signup-link p { color: #fff; }
+    .signup-link p a { color: #FFD700; text-decoration: none; font-weight: 500; }
+    .signup-link p a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="form-wrapper sign-in">
+      <form action="index.html" method="post">
+        <h2>Login</h2>
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" required>
+          <label>Username</label>
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" required>
+          <label>Password</label>
+        </div>
+        <div class="remember">
+          <label><input type="checkbox"> Remember me</label>
+        </div>
+        <button type="submit"><a href="index.html">Login</a></button>
+        <div class="signup-link">
+          <p>Don't have an account? <a href="#" class="signUpBtn-link">Sign Up</a></p>
+        </div>
+      </form>
+    </div>
+    <div class="form-wrapper sign-up">
+      <form action="index.html" method="post">
+        <h2>Sign Up</h2>
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" required>
+          <label>Username</label>
+        </div>
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" required>
+          <label>Email</label>
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" required>
+          <label>Password</label>
+        </div>
+        <div class="remember">
+          <label><input type="checkbox"> I agree to the terms & conditions</label>
+        </div>
+        <button type="submit"><a href="index.html">Sign Up</a></button>
+        <div class="signup-link">
+          <p>Already have an account? <a href="#" class="signInBtn-link">Sign In</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    const signInBtnLink = document.querySelector('.signInBtn-link');
+    const signUpBtnLink = document.querySelector('.signUpBtn-link');
+    const wrapper = document.querySelector('.wrapper');
+    signUpBtnLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      wrapper.classList.add('active');
+    });
+    signInBtnLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      wrapper.classList.remove('active');
+    });
+  </script>
+</body>
+</html>
